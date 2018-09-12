@@ -2,9 +2,7 @@ import * as React from "react";
 import { ApolloProvider } from "react-apollo";
 import * as ReactDOM from "react-dom";
 import client from "./apollo";
-import App from "./App";
-import "./index.css";
-import registerServiceWorker from "./registerServiceWorker";
+import App from "./Components/App";
 
 ReactDOM.render(
   <ApolloProvider client={client}>
@@ -12,4 +10,3 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById("root") as HTMLElement
 );
-registerServiceWorker();
