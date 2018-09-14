@@ -1,7 +1,7 @@
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import OutHome from "../../Routes/OutHome";
+import Login from "../../Routes/Login";
 import PhoneLogin from "../../Routes/PhoneLogin";
 import Home from "../../Routes/Home";
 import VerifyPhone from "../../Routes/VerifyPhone";
@@ -21,7 +21,7 @@ const AppPresenter: React.SFC<IProps> = ({ isLoggedIn }) => (<BrowserRouter>{ is
 
 const LoggedOutRoutes: React.SFC = () => (
   <Switch>
-    <Route path={'/'} exact={true} component={OutHome} />
+    <Route path={'/'} exact={true} component={Login} />
     <Route path={'/phone-login'} component={PhoneLogin} />
     <Route path={'/verify-phone/:number'} component={VerifyPhone} />
     <Route path={'/social-login'} component={SocialLogin} />
