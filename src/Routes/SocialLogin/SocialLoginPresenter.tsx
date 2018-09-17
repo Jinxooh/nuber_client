@@ -13,6 +13,7 @@ import styled from "../../typed-components";
  const Link = styled.span`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
  const Icon = styled.span`
   margin-right: 10px;

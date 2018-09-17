@@ -1,5 +1,6 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
+import { toast } from "react-toastify";
 import PhoneLoginPresenter from "./PhoneLoginPresenter";
 
 interface IState {
@@ -28,20 +29,29 @@ class PhoneLoginContainer extends React.Component<
     );
   }
 
-  public onInputChange: React.ChangeEventHandler<HTMLInputElement | HTMLSelectElement> = event => {
+  public onInputChange: React.ChangeEventHandler<
+    HTMLInputElement | HTMLSelectElement
+  > = event => {
     const {
       target: { name, value }
     } = event;
     this.setState({
-      [name]: value,
+      [name]: value
     } as any);
   };
 
   public onSubmit: React.FormEventHandler<HTMLFormElement> = event => {
     event.preventDefault();
     const { countryCode, phoneNumber } = this.state;
-    console.log(countryCode, phoneNumber);
-  }
+    const isValid = /^\+[1-9]{2}[0-9]{7,11}$/.test(
+      `${countryCode}${phoneNumber}`
+    );
+    if (isValid) {
+      return;
+    } else {
+      toast.error("Please write a vlide phone number");
+    }
+  };
 }
 
 export default PhoneLoginContainer;
