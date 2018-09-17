@@ -1,5 +1,6 @@
 import * as React from "react";
-import { RouteComponentProps } from "react-router";
+import Helmet from "react-helmet";
+import { Link, RouteComponentProps } from "react-router-dom";
 import bgImage from "../../images/bg.png";
 import styled from "../../typed-components";
 
@@ -41,6 +42,7 @@ const SubTitle = styled.h2`
 
 const PhoneLogin = styled.div`
   padding: 20px;
+  cursor: pointer;
 `;
 
 const FakeInput = styled.div`
@@ -56,6 +58,7 @@ const Grey = styled.span`
 const SocialLogin = styled.div`
   border-top: 1px solid ${props => props.theme.greyColor};
   padding: 30px 20px;
+  cursor: pionter;
 `;
 const SocialLink = styled.span`
   color: ${props => props.theme.blueColor};
@@ -64,21 +67,28 @@ const SocialLink = styled.span`
 
 const LoginPresenter: React.SFC<IProps> = () => (
   <Container>
+    <Helmet>
+      <title>Login | Nuber</title>
+    </Helmet>
     <Header>
       <Logo>
         <Title>Nuber</Title>
       </Logo>
     </Header>
     <Footer>
-      <PhoneLogin>
-        <SubTitle>Get Moving with Nuber</SubTitle>
-        <FakeInput>
-          🇰🇷 +82 <Grey>Enter your mobile number</Grey>
-        </FakeInput>
-      </PhoneLogin>
-      <SocialLogin>
-        <SocialLink>Or connect with social</SocialLink>
-      </SocialLogin>
+      <Link to={'/phone-login'}>
+        <PhoneLogin>
+          <SubTitle>Get Moving with Nuber</SubTitle>
+          <FakeInput>
+            🇰🇷 +82 <Grey>Enter your mobile number</Grey>
+          </FakeInput>
+        </PhoneLogin>
+      </Link>
+      <Link to={'/social-login'}>
+        <SocialLogin>
+          <SocialLink>Or connect with social</SocialLink>
+        </SocialLogin>
+      </Link>
     </Footer>
   </Container>
 );
