@@ -1,9 +1,13 @@
-
-import * as React from 'react';
-import styled from '../../typed-components';
+import * as React from "react";
+import styled from "../../typed-components";
 
 interface IProps {
-  placeholder: string;
+  placeholder?: string;
+  type?: string;
+  required?: boolean;
+  value: string;
+  name?: string;
+  onChange: any;
 }
 
 const Container = styled.input`
@@ -27,8 +31,22 @@ const Container = styled.input`
   }
 `;
 
-const Input: React.SFC<IProps> = ({ placeholder}) => (
-  <Container placeholder={placeholder} />
+const Input: React.SFC<IProps> = ({
+  placeholder = "",
+  type = "text",
+  required = true,
+  value,
+  name,
+  onChange,
+}) => (
+  <Container
+    onChange={onChange}
+    name={name}
+    placeholder={placeholder}
+    required={required}
+    value={value}
+    type={type}
+  />
 );
 
 export default Input;
